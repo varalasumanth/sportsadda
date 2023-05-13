@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sports Adda - Betting Application</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #333;
+      padding: 20px;
+      color: #fff;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    footer {
+      background-color: #333;
+      padding: 10px;
+      color: #fff;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sports Adda - Betting Application</h1>
+  </header>
+
+  <main>
+    <h2>Welcome to Sports Adda!</h2>
+    <p>Choose your favorite sport and place your bets.</p>
+
+    <div id="sportsList">
+      <h3>Select a Sport:</h3>
+      <ul>
+        <li onclick="loadMatches('football')">Football</li>
+        <li onclick="loadMatches('basketball')">Basketball</li>
+        <li onclick="loadMatches('tennis')">Tennis</li>
+      </ul>
+    </div>
+
+    <div id="matchesList">
+      <!-- Matches will be loaded dynamically using JavaScript -->
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Sports Adda. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function loadMatches(sport) {
+      // Fetch matches data from API or database based on the selected sport
+      // You can use AJAX or Fetch API to retrieve data
+
+      // Dummy data for demonstration
+      const matches = [
+        { id: 1, homeTeam: 'Team A', awayTeam: 'Team B', startTime: '2023-05-14T14:00:00Z' },
+        { id: 2, homeTeam: 'Team C', awayTeam: 'Team D', startTime: '2023-05-15T19:30:00Z' },
+        { id: 3, homeTeam: 'Team E', awayTeam: 'Team F', startTime: '2023-05-16T12:45:00Z' }
+      ];
+
+      // Generate HTML for matches list
+      const matchesListElement = document.getElementById('matchesList');
+      matchesListElement.innerHTML = '';
+
+      if (matches.length > 0) {
+        const ul = document.createElement('ul');
+
+        matches.forEach(match => {
+          const li = document.createElement('li');
+          li.textContent = `${match.homeTeam} vs ${match.awayTeam} - ${match.startTime}`;
+          ul.appendChild(li);
+        });
+
+        matchesListElement.appendChild(ul);
+      } else {
+        matchesListElement.innerHTML = 'No matches available.';
+      }
+    }
+  </script>
+</body>
+</html>
+
